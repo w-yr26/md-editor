@@ -7,7 +7,7 @@ export default {
   input: 'src/main.ts', // 入口文件
   output: [
     {
-      dir: 'dist/dist.js', // 输出文件
+      dir: 'dist', // 输出文件
       format: 'esm', // ES Module 格式
       sourcemap: true, // 启用 sourcemap
     },
