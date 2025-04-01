@@ -155,18 +155,12 @@ class HTMLRender {
         }
     }
 }
-const renderAST = (node, renderer, id) => {
+const renderAST = (node, renderer) => {
     const toHtmlDOM = () => {
         return renderer.visit(node);
     };
     const htmlStr = toHtmlDOM();
-    const container = document.querySelector(id);
-    if (container) {
-        container.innerHTML = htmlStr;
-    }
-    else {
-        console.log('容器不存在');
-    }
+    return htmlStr;
 };
 
 export { ASTNode, HTMLRender, Token, buildAST, renderAST, tokenizer };

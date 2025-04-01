@@ -31,16 +31,12 @@ export class HTMLRender implements ASTVisitor {
   }
 }
 
-export const renderAST = (node: ASTNode, renderer: ASTVisitor, id: string) => {
+export const renderAST = (node: ASTNode, renderer: ASTVisitor) => {
   const toHtmlDOM = () => {
     return renderer.visit(node)
   }
 
   const htmlStr = toHtmlDOM()
-  const container = document.querySelector(id)
-  if (container) {
-    container.innerHTML = htmlStr
-  } else {
-    console.log('容器不存在')
-  }
+
+  return htmlStr
 }

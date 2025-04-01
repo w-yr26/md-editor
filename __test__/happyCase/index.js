@@ -9,6 +9,12 @@ import { buildAST, HTMLRender, renderAST, tokenizer } from '../../dist/main.js'
   console.log('build2', buildAST(res2))
 
   const renderer = new HTMLRender()
-  renderAST(buildAST(res1), renderer, '#app')
-  // console.log(renderAST(buildAST(res2), renderer))
+  const htmlStr = renderAST(buildAST(res1), renderer)
+  console.log('htmlStr', htmlStr)
+  // const container = document.querySelector('#app')
+  // if (container) {
+  //   container.innerHTML = htmlStr
+  // } else {
+  //   console.log('容器不存在')
+  // }
 })()
