@@ -1,3 +1,10 @@
+/**
+ * md 编辑器思路：
+ * 1. string -> token
+ * 2. token -> ast
+ * 3. ast -> render
+ */
+
 class Token {
   constructor(public type: string, public value: string) {}
 }
@@ -44,7 +51,7 @@ class Tokenizer {
       }
 
       if (!matched) {
-        tokens.push(new Token('text', line))
+        tokens.push(new Token('paragraph', line))
       }
     })
     return tokens
@@ -53,8 +60,7 @@ class Tokenizer {
 
 const tokenizer = new Tokenizer()
 
+// 为md语法添加解析策略
 tokenizer.addStrategy(new HeaderStrategy())
 
-const res1 = tokenizer.tokenize('# Header1')
-const res2 = tokenizer.tokenize('* List Item 1')
-console.log(res1, res2)
+export { tokenizer, Token }

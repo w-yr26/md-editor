@@ -1,1 +1,2 @@
-import './tokens/index.ts';
+export * from './tokens/index';
+export * from './ast/index.js';
