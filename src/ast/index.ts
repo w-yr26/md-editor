@@ -1,7 +1,7 @@
 import { Token } from '../tokens/index'
 
 // ASTNode 类
-class ASTNode {
+export class ASTNode {
   type: string = ''
   children: ASTNode[] = []
   value?: string = ''

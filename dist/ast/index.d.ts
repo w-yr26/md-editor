@@ -1,5 +1,5 @@
 import { Token } from '../tokens/index';
-declare class ASTNode {
+export declare class ASTNode {
     type: string;
     children: ASTNode[];
     value?: string;
@@ -8,4 +8,3 @@ declare class ASTNode {
     print(depth?: number): void;
 }
 export declare const buildAST: (tokens: Token[]) => ASTNode;
-export {};

@@ -130,5 +130,44 @@ const buildAST = (tokens) => {
     return root;
 };
 
-export { Token, buildAST, tokenizer };
+/**
+ * MarkdownNode: {
+ *  type: xxx,
+ *  value: xxx,
+ *  children: [MarkdownNode1, MarkdownNode2]
+ * }
+ */
+class HTMLRender {
+    visit(node) {
+        switch (node.type) {
+            case 'header1':
+                return `<h1>${node.value}</h1>`;
+            case 'header2':
+                return `<h2>${node.value}</h2>`;
+            case 'header3':
+                return `<h3>${node.value}</h3>`;
+            case 'header4':
+                return `<h4>${node.value}</h4>`;
+            case 'paragraph':
+                return `${node.value}`;
+            default:
+                return node.children.map((child) => this.visit(child)).join('');
+        }
+    }
+}
+const renderAST = (node, renderer, id) => {
+    const toHtmlDOM = () => {
+        return renderer.visit(node);
+    };
+    const htmlStr = toHtmlDOM();
+    const container = document.querySelector(id);
+    if (container) {
+        container.innerHTML = htmlStr;
+    }
+    else {
+        console.log('容器不存在');
+    }
+};
+
+export { ASTNode, HTMLRender, Token, buildAST, renderAST, tokenizer };
 //# sourceMappingURL=main.js.map
